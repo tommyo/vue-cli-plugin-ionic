@@ -1,15 +1,34 @@
 module.exports = (api, opts, rootOptions) => {
   const utils = require('./utils')(api);
 
+  const hasRouter = api.hasPlugin('router');
+  const isTS = api.hasPlugin('typescript');
+
+  const version = '5.4.0';
+
   api.extendPackage({
-    dependencies: { '@ionic/vue': '0.0.4' }
+    dependencies: { '@ionic/vue': `^${version}` }
   });
+  api.injectImports(api.entryFile, `import ionic from './plugins/ionic'`);
+  api.transformScript(api.entryFile, require('./injectUseIonic'));
+  
+  api.render('./template');
 
-  api.injectImports(utils.getMain(), `import './plugins/ionic.js'`);
+  if (hasRouter) {
+    api.extendPackage({
+      dependencies: { '@ionic/vue-router': `^${version}` }
+    });
+    api.transformScript(`src/router/index.${isTS ? 'ts' : 'js'}`, require('./modifyRouter'));
+    api.exitLog('Don\'t forget to replace RouterView with IonRouterOutlet wherever needed');
+  }
 
-  api.render({
-    './src/plugins/ionic.js': './templates/src/plugins/ionic.js',
-    './src/ionic-variables.css': './templates/src/ionic-variables.css'
-  });
   api.onCreateComplete(() => {});
+
+  if (api.invoking) {
+    if (api.hasPlugin('typescript')) {
+      /* eslint-disable-next-line node/no-extraneous-require */
+      const convertFiles = require('@vue/cli-plugin-typescript/generator/convert');
+      convertFiles(api);
+    }
+  }
 };
