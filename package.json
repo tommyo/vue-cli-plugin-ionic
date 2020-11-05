@@ -1,6 +1,6 @@
 {
   "name": "@tommycto/vue-cli-plugin-ionic",
-  "version": "1.0.0-alpha.2",
+  "version": "1.0.0-alpha.3",
   "description": "vue-cli 3 plugin to add ionic",
   "main": "index.js",
   "repository": {
