@@ -1,11 +1,11 @@
 {
-  "name": "vue-cli-plugin-ionic",
+  "name": "@tommycto/vue-cli-plugin-ionic",
   "version": "1.0.0-alpha.1",
   "description": "vue-cli 3 plugin to add ionic",
   "main": "index.js",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ionic-team/vue-cli-plugin-ionic.git"
+    "url": "git+https://github.com/tommyo/vue-cli-plugin-ionic.git"
   },
   "keywords": [],
     "keywords": [
@@ -18,7 +18,7 @@
   ],
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/ionic-team/vue-cli-plugin-ionic/issues"
+    "url": "https://github.com/tommyo/vue-cli-plugin-ionic/issues"
   },
-  "homepage": "https://github.com/ionic-team/vue-cli-plugin-ionic#readme"
+  "homepage": "https://github.com/tommyo/vue-cli-plugin-ionic"
 }
