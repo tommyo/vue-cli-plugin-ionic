@@ -7,7 +7,10 @@ module.exports = (api, opts, rootOptions) => {
   const version = '5.4.0';
 
   api.extendPackage({
-    dependencies: { '@ionic/vue': `^${version}` }
+    dependencies: { 
+      '@ionic/vue': `^${version}`,
+      'ionicons': '^5.2.3'
+    }
   });
   api.injectImports(api.entryFile, `import ionic from './plugins/ionic'`);
   api.transformScript(api.entryFile, require('./injectUseIonic'));
